@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+		integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+		crossorigin="anonymous"></script>
+	
+	
+	<title>home page</title>
+</head>
+
+<body>
+	<div class="conatiner"><br>
+		<center><a th:href="@{/saveStudentPage}" class="btn btn-primary btn-sm">Add Student</a></center><br>
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">StudentId</th>
+					<th scope="col">StudentName</th>
+					<th scope="col">StudentAddress</th>
+					<th scope="col">email</th>
+					<th scope="col">Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student:${studentlist}">
+					<th th:text="${student.id}" scope="row"></th>
+					<td th:text="${student.name}"></td>
+					<td th:text="${student.address}"></td>
+					<td th:text="${student.email}"></td>
+                     <td>
+						 <a th:href="@{/updateStudentPage/{id}(id=${student.id})}" class="btn btn-primary">Update</a>
+						 <a th:href="@{/deleteStudentPage/{id}(id=${student.id})}" class="btn btn-danger">Delete</a>
+					 </td>
+				</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+
+
+</body>
+
+</html>
